@@ -1,6 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name="agentic-radiology-workflow"
-version="0.1.0"
-requires-python=">=3.10"
+name = "agentic-radiology-workflow"
+version = "1.0.0"
+description = "Reference multi-agent governance workflow for radiology operations"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["AGENTS*", "SKILLS*", "TOOLS*", "orchestration*", "memory*", "state*", "schemas*", "prompts*", "config*", "safety*", "observability*", "evals*", "benchmarks*"]
+namespaces = true
+
 [tool.pytest.ini_options]
-testpaths=["tests"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+exclude = [".git", ".venv", "AGENTS", "TOOLS", "SKILLS", "prompts", "schemas", "state", "tests/test_structure.py"]
+
+[tool.ruff.lint]
+select = ["E", "F"]
